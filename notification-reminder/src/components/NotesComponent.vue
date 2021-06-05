@@ -22,7 +22,6 @@
 <script>
 import * as dataService from '../dataService'
 import NoteCard from './NoteCard'
-// import notification from '../notification';
 
 export default {
     components:{
@@ -51,7 +50,6 @@ export default {
         },
         async loadNotes(){
             this.items = await dataService.getNotes();
-            // notification();
         }
     }
 }

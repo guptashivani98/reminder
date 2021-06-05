@@ -135,9 +135,17 @@ export default {
             body: this.item.text,
             }
             clearTimeout(this.istimeout);
-            this.istimeout=setTimeout(() => {
-                new Notification(this.item.title,options);
-            }, dts-new Date().getTime()); 
+           
+            navigator.serviceWorker.register('sw.js');
+            Notification.requestPermission((result)=> {
+            if (result === 'granted') {
+                navigator.serviceWorker.ready.then((registration) => {
+                    this.istimeout=setTimeout(() => {
+                        registration.showNotification(this.item.title,options);
+                    }, dts-new Date().getTime()); 
+                });
+            }
+            });
       }
     },
     async deleteNote() {

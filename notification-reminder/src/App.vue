@@ -35,9 +35,7 @@ export default {
   data: () => ({
     //
   }),
-  created(){
-    Notification.requestPermission();
-  },
+  
   methods:{
     async addNote(){
         this.$refs.noteRef.addNote()
